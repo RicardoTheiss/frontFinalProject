@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read, React, Review</title>
+ 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F5F5F5;
+        }
+
+        #divGeral {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        #imagemDiv {
+            background-image: url(assets/fotoGeral.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100vh;
+            width: 55%; /* Ocupa metade da tela */
+        }
+
+        #conteudoDiv {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50%; /* Ocupa a outra metade da tela */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #idBemVindo {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #272442;
+        }
+
+        #idLoginPage, #idSignUpPage {
+            background-color: rgba(255, 255, 255, 0.9); /* Levemente transparente */
+            padding: 20px;
+            border-radius: 10px;
+            height: 60vh;
+            width: 30vw;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sutil sombra */
+            color: #8c668f;            
+            text-align: center;
+            display: flex;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        #idSignUpPage {
+            display: none;
+            opacity: 0; /* Inicia com opacidade zero para esconder a seção de registro */
+        }
+
+        input {
+            width: 70%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:hover, input:focus {
+            border-color: #6200ee; /* Cor do hover/foco para os inputs */
+        }
+
+        input:focus + label {
+            margin-top: -20px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        label {
+            transition: margin-top 0.3s ease, background-color 0.3s ease, color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;
+        }
+
+        .show {
+            width: 20px; /* Ajuste o tamanho do botão conforme necessário */
+            cursor: pointer;
+        }
+
+        .show :hover {
+            border-color: #222123; /* Mude a cor do botão quando o mouse estiver sobre ele */
+        }
+
+        button {
+            width: 70%;
+            padding: 10px;
+            background-color: #6200ee; 
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4a00b1; /* Cor do hover para o botão */
+        }
+        h2 {
+            font-size: 5vh;
+        }
+        h1{
+            color: #d0b2fa;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0,2);
+        }
+        a{
+            color: #6200ee;
+        }
+    </style>
+</head>
+<body>  
+    <div id="divGeral">
+        <div id="imagemDiv"></div>
+        
+        <div id="conteudoDiv">
+            <section id="idBemVindo">
+                <h1>Bem-Vindo ao</h1>
+                <h1>Read, React, Review</h1>
+            </section>
+
+            <section id="idLoginPage">
+                <h2>Login</h2>
+                <p>Não apenas acesse, explore!</p>
+                <br>
+                <br>
+                <input type="text" placeholder="Nome de usuário" id="userInput">
+                <input type="password" placeholder="Senha" id="passwordInput">
+                <!-- <img class="show" src="assets/olhoAberto.webp" alt="Mostrar">
+                <img class="show" src="assets/olhoFechado.png" alt="Esconder"> -->
+                <div style="font-size: 12px; margin-top: -10px; text-align: end;">
+                    <output>Não possui uma conta? <a onclick="abreTelaRegistro()" href="#">Registre-se</a></output>
+                </div>
+                <br>
+                <button>Login</button>
+            </section>
+        
+            <section id="idSignUpPage">
+                <h2>Registre-se</h2>
+                <p>Não crie apenas uma conta, crie uma aventura!</p>
+                <br>
+                <br>
+                <input type="email" placeholder="Digite seu email">
+                <input type="text" placeholder="Digite seu nome de usuário">
+                <input type="password" placeholder="Crie uma senha">
+                <div style="font-size: 12px; margin-top: -10px;">
+                    <output>Já possui uma conta? <a onclick="abreTelaLogin()" href="#">Faça login</a></output>
+                </div>
+                <br>
+                <button>Cadastro</button>
+            </section>
+        </div>
+    </div>
+    <script>
+       function abreTelaRegistro() {
+            document.getElementById("idLoginPage").style.opacity = '0';
+            document.getElementById("idSignUpPage").style.opacity = '1';
+            setTimeout(function() {
+                document.getElementById("idLoginPage").style.display = 'none';
+                document.getElementById("idSignUpPage").style.display = 'flex';
+            }, 500); /* Aguarda o término da transição (500ms) antes de alterar o display */
+        }
+    
+        function abreTelaLogin() {
+            document.getElementById("idLoginPage").style.opacity = '1';
+            document.getElementById("idSignUpPage").style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById("idLoginPage").style.display = 'flex';
+                document.getElementById("idSignUpPage").style.display = 'none';
+            }, 500); /* Aguarda o término da transição (500ms) antes de alterar o display */
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read, React & Review</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #2E3237;
+            font-family: "Libre Franklin", sans-serif;
+        }
+
+        header {
+            display: flex;
+            background-color: #1F2124;
+            height: 50px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            color: #D0B2FA;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        aside {
+            width: 0px;
+            background-color: #1F2124;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+            overflow: hidden;
+            z-index: 1;
+            margin-top: 50px;
+        }
+
+        aside.expanded {
+            width: 200px;
+        }
+
+        aside ul {
+            list-style: none;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        aside ul li {
+            margin-bottom: 20px;
+        }
+
+        aside ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #D0B2FA;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        aside ul li a:hover {
+            background-color: #333;
+            transform: translateX(10px);
+        }
+
+        main {
+            padding: 20px;
+            color: #D0B2FA;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="icon" onclick="toggleAside()">☰</div>
+        <h1>Read, React & Review</h1>
+    </header>
+    <aside id="sidebar">
+        <ul>
+            <li><a href="mainPage.html">Página Principal</a></li>
+            <li><a href="fórum.html">Fórum</a></li>
+            <li><a href="sobreNos.html">Sobre Nós</a></li>
+            <li><a href="ctt.html">Entre em Contato</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla malesuada lectus in elit posuere, sit amet
+            mattis ipsum scelerisque. Vivamus vel magna ullamcorper, sodales magna sit amet, tincidunt risus. Proin
+            euismod, orci vel tincidunt commodo, sapien nisi sollicitudin neque, id vestibulum mi enim non ipsum. Sed
+            eu odio mauris. Duis lobortis dolor vitae pulvinar mollis. Etiam ullamcorper tincidunt purus, ut sodales
+            eros faucibus nec. Integer vestibulum scelerisque neque, vel condimentum purus aliquet vel. Duis
+            ullamcorper vehicula diam, sit amet vestibulum mauris vehicula sed. Integer commodo massa ac ex luctus
+            vestibulum. Integer non justo a lectus tincidunt suscipit. Sed sed convallis sem. Proin sit amet eros nec
+            nisi ullamcorper scelerisque.</p>
+    </main>
+
+    <script>
+        function toggleAside() {
+            var aside = document.getElementById('sidebar');
+            aside.classList.toggle('expanded');
+        }
+    </script>
+</body>
+
+</html>
